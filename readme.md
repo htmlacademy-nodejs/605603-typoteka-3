@@ -1,7 +1,7 @@
 # Личный проект «Типотека» [![Build status][travis-image]][travis-url]
 
-* Студент: [Aleks Balev](https://up.htmlacademy.ru/nodejs/3/user/605603).
-* Наставник: `Неизвестно`.
+- Студент: [Aleks Balev](https://up.htmlacademy.ru/nodejs/3/user/605603).
+- Наставник: `Ruslan Malogulko`.
 
 ---
 
