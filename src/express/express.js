@@ -23,9 +23,6 @@ app.use((req, res) => res.status(500).render(`errors/505`));
 app.set(`views`, path.resolve(__dirname, `templates`));
 app.set(`view engine`, `pug`);
 
-app.listen(DEFAULT_PORT, () => {
-  console.log(`App listening at http://localhost:${DEFAULT_PORT}`);
-
 const port = process.env.PORT || DEFAULT_PORT;
 
 app.listen(port, () => {
