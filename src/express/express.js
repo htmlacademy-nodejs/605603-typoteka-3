@@ -25,4 +25,9 @@ app.set(`view engine`, `pug`);
 
 app.listen(DEFAULT_PORT, () => {
   console.log(`App listening at http://localhost:${DEFAULT_PORT}`);
+
+const port = process.env.PORT || DEFAULT_PORT;
+
+app.listen(port, () => {
+  console.log(`App listening at http://localhost:${port}`);
 });
