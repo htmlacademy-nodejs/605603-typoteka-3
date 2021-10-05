@@ -26,11 +26,7 @@
   },
   "dependencies": {
     "chalk": "4.1.2",
-<<<<<<< HEAD
     "express": "4.17.1",
     "pug": "3.0.2"
-=======
-    "express": "4.17.1"
->>>>>>> baf72b5471e7b3fc73513af2a4993074fa6945fa
   }
 }
