@@ -1,9 +1,10 @@
 'use strict';
 
 const {getRandomInt, shuffle} = require(`../../utils`);
-const {ExitCode} = require(`../../const`);
+const {ExitCode, MAX_ID_LENGTH} = require(`../../const`);
 const fs = require(`fs`).promises;
 const chalk = require(`chalk`);
+const {nanoid} = require(`nanoid`);
 
 const DEFAULT_MOCKS_COUNT = 1;
 const MOCKS_FILE_NAME = `mocks.json`;
@@ -11,6 +12,7 @@ const MAX_MOCKS_COUNT = 1000;
 const CATEGORIES = `categories.txt`;
 const SENTENCES = `sentences.txt`;
 const TITLES = `titles.txt`;
+const COMMENTS = `comments.txt`;
 
 const readFromTxt = async (fileName) => {
   try {
@@ -37,7 +39,16 @@ const randomPublicationDate = () => {
   });
 };
 
-const generateOffers = (count, sentences, categories, titles) => {
+const generateComments = (count, comments) => {
+  return Array(count).fill({}).map(() => ({
+    id: nanoid(MAX_ID_LENGTH),
+    text: shuffle(comments)
+      .slice(1, getRandomInt(1, 5))
+      .join(` `),
+  }));
+};
+
+const generateOffers = (count, sentences, categories, titles, comments) => {
   if (count > MAX_MOCKS_COUNT) {
     console.error(chalk.red(`Не больше ${MAX_MOCKS_COUNT} публикаций`));
     process.exit(ExitCode.error);
@@ -46,6 +57,8 @@ const generateOffers = (count, sentences, categories, titles) => {
   return Array(count)
     .fill({})
     .map(() => ({
+      id: nanoid(MAX_ID_LENGTH),
+      comments: generateComments(getRandomInt(1, 4), comments),
       title: titles[getRandomInt(0, titles.length - 1)],
       announce: shuffle(sentences).slice(1, 5).join(` `),
       fullText: shuffle(sentences).slice(1, 5).join(` `),
@@ -60,10 +73,15 @@ module.exports = {
     const sentences = await readFromTxt(SENTENCES);
     const categories = await readFromTxt(CATEGORIES);
     const titles = await readFromTxt(TITLES);
+    const comments = await readFromTxt(COMMENTS);
 
     const [count] = args;
     const countOffer = Number.parseInt(count, 10) || DEFAULT_MOCKS_COUNT;
-    const content = JSON.stringify(generateOffers(countOffer, sentences, categories, titles));
+    const content = JSON.stringify(
+        generateOffers(
+            countOffer, sentences, categories, titles, comments
+        )
+    );
 
     try {
       await fs.writeFile(MOCKS_FILE_NAME, content);

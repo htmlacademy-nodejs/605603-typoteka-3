@@ -1,0 +1,17 @@
+'use strict';
+
+class CategoriesService {
+  constructor(articles) {
+    this._articles = articles;
+  }
+
+  findAll() {
+    const categories = this._articles.reduce((acc, article) => {
+      article.category.map((category) => acc.add(category));
+    }, new Set());
+
+    return categories;
+  }
+}
+
+module.exports = CategoriesService;
