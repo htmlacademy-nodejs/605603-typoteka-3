@@ -18,11 +18,32 @@ class ArticlesService {
   }
 
   createArticle(article) {
-    const newArticle = Object
-      .assign({id: nanoid(MAX_ID_LENGTH), comments: []}, article);
+    console.log(article);
+    const newArticle = Object.assign({
+      id: nanoid(MAX_ID_LENGTH),
+      comments: []
+    }, article);
 
     this._articles.push(newArticle);
     return newArticle;
+  }
+
+  update(id, article) {
+    const oldArticle = this._articles
+      .find((item) => item.id === id);
+
+    return Object.assign(oldArticle, article);
+  }
+
+  delete(id) {
+    const article = this._articles.find((item) => item.id === id);
+
+    if (!article) {
+      return null;
+    }
+
+    this._articles = this._articles.filter((item) => item.id !== id);
+    return article;
   }
 }
 

@@ -1,0 +1,52 @@
+GET http://localhost:3000/api/articles HTTP/1.1
+
+###
+
+GET http://localhost:3000/api/articles/O-IscP HTTP/1.1
+
+###
+
+POST http://localhost:3000/api/articles HTTP/1.1
+Content-Type: application/json
+
+{
+  "title": "Ёлки. История деревьев",
+  "announce": "Этот смартфон",
+  "fullText": "Этот смартфон — настоящая находка. Большой и яркий экран мощнейший процессор — всё это в небольшом гаджете.",
+  "createdDate": "22 сентября 2021 г., 20:27",
+  "category": ["Деревья"],
+}
+
+###
+
+PUT http://localhost:3000/api/articles/O-IscP HTTP/1.1
+Content-Type: application/json
+
+{
+  "title": "Ёлки. История деревьев",
+  "announce": "Этот смартфон",
+  "fullText": "Этот смартфон — настоящая находка. Большой и яркий экран мощнейший процессор — всё это в небольшом гаджете.",
+  "createdDate": "22 сентября 2021 г., 20:27",
+  "category": ["Деревья"],
+}
+
+###
+
+DELETE http://localhost:3000/api/articles/QitoLB HTTP/1.1
+
+###
+
+GET http://localhost:3000/api/articles/O-IscP/comments HTTP/1.1
+
+###
+
+DELETE http://localhost:3000/api/articles/O-IscP/comments/Wi4ESV HTTP/1.1
+
+###
+
+POST http://localhost:3000/api/articles/O-IscP/comments HTTP/1.1
+Content-Type: application/json
+
+{
+  "text": "Новый коммент"
+}

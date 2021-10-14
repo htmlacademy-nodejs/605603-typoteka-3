@@ -8,9 +8,10 @@ class CategoriesService {
   findAll() {
     const categories = this._articles.reduce((acc, article) => {
       article.category.map((category) => acc.add(category));
+      return acc;
     }, new Set());
 
-    return categories;
+    return [...categories];
   }
 }
 

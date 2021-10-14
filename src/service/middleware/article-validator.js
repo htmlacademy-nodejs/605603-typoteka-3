@@ -2,7 +2,7 @@
 
 const {HttpCode} = require(`../../const`);
 
-const articleKeys = [`id`, `comments`, `title`, `announce`, `createdDate`, `category`];
+const articleKeys = [`title`, `announce`, `fullText`, `createdDate`, `category`];
 
 module.exports = (req, res, next) => {
   const newArticle = req.body;

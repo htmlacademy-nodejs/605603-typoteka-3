@@ -1,16 +1,19 @@
 'use strict';
 
+const express = require(`express`);
 const chalk = require(`chalk`);
 const fs = require(`fs`).promises;
-const express = require(`express`);
-const {HttpCode} = require(`../../const`);
+const {HttpCode, API_PREFIX} = require(`../../const`);
+const routes = require(`../api`);
+
+const DEFAULT_PORT = 3000;
+const FILENAME = `mocks.json`;
 
 const app = express();
 
 app.use(express.json());
 
-const DEFAULT_PORT = 3000;
-const FILENAME = `mocks.json`;
+app.use(API_PREFIX, routes);
 
 app.get(`/posts`, async (req, res) => {
   try {
@@ -23,10 +26,10 @@ app.get(`/posts`, async (req, res) => {
   }
 });
 
-app.use((req, res) => res
-  .status(HttpCode.NOT_FOUND)
-  .send(`Not Found`)
-);
+app.use((req, res) => {
+  res.status(HttpCode.NOT_FOUND)
+    .send(`Not found`);
+});
 
 module.exports = {
   name: `--server`,
