@@ -14,12 +14,12 @@ Content-Type: application/json
   "announce": "Этот смартфон",
   "fullText": "Этот смартфон — настоящая находка. Большой и яркий экран мощнейший процессор — всё это в небольшом гаджете.",
   "createdDate": "22 сентября 2021 г., 20:27",
-  "category": ["Деревья"],
+  "category": ["Деревья"]
 }
 
 ###
 
-PUT http://localhost:3000/api/articles/O-IscP HTTP/1.1
+PUT http://localhost:3000/api/articles/QitoLB HTTP/1.1
 Content-Type: application/json
 
 {
@@ -27,7 +27,7 @@ Content-Type: application/json
   "announce": "Этот смартфон",
   "fullText": "Этот смартфон — настоящая находка. Большой и яркий экран мощнейший процессор — всё это в небольшом гаджете.",
   "createdDate": "22 сентября 2021 г., 20:27",
-  "category": ["Деревья"],
+  "category": ["Деревья"]
 }
 
 ###

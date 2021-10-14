@@ -48,9 +48,9 @@ module.exports = (app, articleService, commentsService) => {
         .send(`Article with id: ${articleId}, doesn't exist`);
     }
 
-    const updatedArticle = articleService.update(article, req.body);
+    const updatedArticle = articleService.update(articleId, req.body);
 
-    return res.send(HttpCode.OK)
+    return res.status(HttpCode.OK)
       .json(updatedArticle);
   });
 
