@@ -14,4 +14,9 @@ node_modules/
 # Директория с собранными файлами проекта
 build/
 
-lib/logs
+logs
+
+# Директория с загруженными изображениями
+src/express/upload/img/*.*
+
+!src/express/upload/img/.gitkeep
