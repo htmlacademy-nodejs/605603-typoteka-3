@@ -14,7 +14,7 @@ const mockData = [
     id: `C_aW3m`,
     comments: [
       {
-        id: `Xr2WMI`,
+        id: `sHsEEk`,
         text: `Согласен с автором! Хочу такую же футболку :-) Мне не нравится ваш стиль. Ощущение, что вы меня поучаете. Планируете записать видосик на эту тему?`,
       },
       {
@@ -341,7 +341,7 @@ describe(`API returns a list of comments to given article`, () => {
 
   test(`Status code 200`, () => expect(response.statusCode).toBe(HttpCode.OK));
 
-  test(`Returns list of 6 comments`, () => expect(response.body.length).toBe(6));
+  test(`Returns list of 5 comments`, () => expect(response.body.length).toBe(5));
 
   test(`First comment's id is "Xr2WMI"`, () => expect(response.body[0].id).toBe(`Xr2WMI`));
 
@@ -411,11 +411,12 @@ describe(`API correctly deletes a comment`, () => {
   test(`Status code 200`, () => expect(response.statusCode).toBe(HttpCode.OK));
 
   test(`Returns comment deleted`, () => expect(response.body.id).toBe(`Xr2WMI`));
-
-  test(`Comments count is 4 now`, () => request(app)
-    .get(`/articles/RJtp3-/comments`)
-    .expect((res) => expect(res.body.length).toBe(4))
-  );
+  console.log();
+  test(`Comments count is 4 now`, () => {
+    request(app)
+      .get(`/articles/RJtp3-/comments`)
+      .expect((res) => expect(res.body.length).toBe(4));
+  });
 
 });
 
