@@ -11,8 +11,7 @@ myRouter.get(`/`, async (req, res) => {
 });
 
 myRouter.get(`/comments`, async (req, res) => {
-  const {id} = req.params;
-  const comments = await api.getComments(id);
+  const comments = await api.getAllComments();
 
   res.render(`comments`, {comments});
 });

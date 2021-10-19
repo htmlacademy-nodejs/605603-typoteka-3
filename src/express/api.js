@@ -9,9 +9,9 @@ const defaultUrl = `http://localhost:${port}/api/`;
 
 class API {
 
-  constructor(baseUrl, timeout) {
+  constructor(baseURL, timeout) {
     this._http = axios.create({
-      baseUrl,
+      baseURL,
       timeout
     });
   }
@@ -30,8 +30,8 @@ class API {
     return this._load(`/articles/${id}`);
   }
 
-  async getComments(id) {
-    return this._load(`/articles/${id}/comments`);
+  async getAllComments() {
+    return this._load(`/comments`);
   }
 }
 

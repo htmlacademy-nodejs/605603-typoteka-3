@@ -19,7 +19,9 @@ app.use(`/articles`, articlesRoutes);
 
 app.use(express.static(path.resolve(__dirname, PUBLIC_DIR)));
 
-app.use((req, res) => res.status(HttpCode.BAD_REQUEST).render(`errors/404`));
+app.use((req, res) => {
+  res.status(HttpCode.NOT_FOUND).render(`errors/404`);
+});
 
 app.use((err, _req, res, _next) => {
   res.status(HttpCode.INTERNAL_SERVER_ERROR).render(`errors/500`);

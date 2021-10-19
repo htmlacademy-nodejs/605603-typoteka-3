@@ -4,7 +4,22 @@ const {nanoid} = require(`nanoid`);
 const {MAX_ID_LENGTH} = require(`../../const`);
 
 class CommentsService {
-  findAll(article) {
+  constructor(articles) {
+    this._articles = articles;
+  }
+
+  findAll() {
+    const allComments = [];
+
+    this._articles
+      .map((item) => {
+        return allComments.push(...item.comments);
+      });
+
+    return allComments;
+  }
+
+  findAllArticleComments(article) {
     return article.comments;
   }
 
