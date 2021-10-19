@@ -8,15 +8,16 @@ class CommentsService {
     return article.comments;
   }
 
-  delete(article, commentId) {
+  deleteComment(article, commentId) {
     const deleteComment = article.comments
       .find((item) => item.id === commentId);
+
 
     if (!deleteComment) {
       return null;
     }
 
-    article.comments
+    article.comments = article.comments
       .filter((item) => item.id !== commentId);
 
     return deleteComment;

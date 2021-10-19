@@ -43,7 +43,7 @@ const generateComments = (count, comments) => {
   return Array(count).fill({}).map(() => ({
     id: nanoid(MAX_ID_LENGTH),
     text: shuffle(comments)
-      .slice(1, getRandomInt(1, 5))
+      .slice(0, getRandomInt(1, 3))
       .join(` `),
   }));
 };

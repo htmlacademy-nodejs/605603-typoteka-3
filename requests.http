@@ -36,11 +36,11 @@ DELETE http://localhost:3000/api/articles/QitoLB HTTP/1.1
 
 ###
 
-GET http://localhost:3000/api/articles/O-IscP/comments HTTP/1.1
+GET http://localhost:3000/api/articles/C_aW3m/comments HTTP/1.1
 
 ###
 
-DELETE http://localhost:3000/api/articles/O-IscP/comments/Wi4ESV HTTP/1.1
+DELETE http://localhost:3000/api/articles/C_aW3m/comments/sHsEEk HTTP/1.1
 
 ###
 

@@ -78,7 +78,7 @@ module.exports = (app, articleService, commentsService) => {
   route.delete(`/:articleId/comments/:commentId`, articleExists(articleService), (req, res) => {
     const {article} = res.locals;
     const {commentId} = req.params;
-    const deleteComment = commentsService.delete(article, commentId);
+    const deleteComment = commentsService.deleteComment(article, commentId);
 
     if (!deleteComment) {
       return res.status(HttpCode.NOT_FOUND)

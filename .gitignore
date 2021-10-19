@@ -14,5 +14,4 @@ node_modules/
 # Директория с собранными файлами проекта
 build/
 
-# mocks
-mocks.json
+lib/logs
