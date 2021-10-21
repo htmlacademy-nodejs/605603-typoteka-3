@@ -32,11 +32,13 @@ const randomPublicationDate = () => {
   const dateCount = timestamp + ((1000 * 60 * 60 * 24 * randomPastThreeMonths));
   const date = new Date(dateCount);
 
-  return date.toLocaleString(`ru-RU`, {
-    dateStyle: `long`,
-    timeStyle: `short`,
-    hour12: false
-  });
+  return {
+    ISODate: date.toISOString(),
+    fullDate: date.toLocaleString(`ru-RU`, {
+      dateStyle: `short`,
+      timeStyle: `short`,
+      hour12: false
+    })};
 };
 
 const generateComments = (count, comments) => {
@@ -46,6 +48,19 @@ const generateComments = (count, comments) => {
       .slice(0, getRandomInt(1, 3))
       .join(` `),
   }));
+};
+
+const getRandomPictureObj = () => {
+  const pictures = [
+    {name: `forest`, alt: `Фотография леса`},
+    {name: `sea`, alt: `Фотография моря`},
+    {name: `skyscraper`, alt: `Фотография небоскреба`}
+  ];
+  if (Math.random() < 0.5) {
+    return ``;
+  } else {
+    return pictures[getRandomInt(0, pictures.length - 1)];
+  }
 };
 
 const generateOffers = (count, sentences, categories, titles, comments) => {
@@ -64,6 +79,7 @@ const generateOffers = (count, sentences, categories, titles, comments) => {
       fullText: shuffle(sentences).slice(1, 5).join(` `),
       createdDate: randomPublicationDate(),
       category: [categories[getRandomInt(0, categories.length - 1)]],
+      picture: getRandomPictureObj(),
     }));
 };
 
