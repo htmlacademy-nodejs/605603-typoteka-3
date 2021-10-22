@@ -15,3 +15,5 @@ module.exports.shuffle = (arr) => {
 
   return arr;
 };
+
+module.exports.ensureArray = (value) => Array.isArray(value) ? value : [value];

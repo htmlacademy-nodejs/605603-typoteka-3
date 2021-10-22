@@ -33,6 +33,18 @@ class API {
   async getAllComments() {
     return this._load(`/comments`);
   }
+
+  async getCategories() {
+    return this._load(`/categories`);
+  }
+
+  async addArticle(data) {
+    console.log(data);
+    return this._load(`/articles`, {
+      method: `POST`,
+      data
+    });
+  }
 }
 
 const defaultAPI = new API(defaultUrl, TIMEOUT);

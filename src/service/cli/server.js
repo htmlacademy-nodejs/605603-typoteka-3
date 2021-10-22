@@ -1,5 +1,6 @@
 'use strict';
 
+const {urlencoded} = require(`express`);
 const express = require(`express`);
 const {HttpCode, API_PREFIX} = require(`../../const`);
 const routes = require(`../api`);
@@ -11,6 +12,8 @@ const app = express();
 const logger = getLogger({name: `api`});
 
 app.use(express.json());
+
+app.use(urlencoded({extended: true}));
 
 app.use((req, res, next) => {
   logger.debug(`Request to url ${req.url}`);
