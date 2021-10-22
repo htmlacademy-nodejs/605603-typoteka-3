@@ -6,7 +6,7 @@ const path = require(`path`);
 const {nanoid} = require(`nanoid`);
 const {ensureArray} = require(`../../utils`);
 
-const UPLOAD_DIR = `../upload/img`;
+const UPLOAD_DIR = `../upload/img/`;
 
 const uploadDirAbsolute = path.resolve(__dirname, UPLOAD_DIR);
 
@@ -28,14 +28,22 @@ articlesRouter.get(`/add`, (req, res) => res.render(`articles/post`));
 
 articlesRouter.post(`/add`, upload.single(`photo`), async (req, res) => {
   const {body, file} = req;
-  console.log(body);
+
+  console.log(req);
+
   const articleData = {
     title: body.title,
-    picture: file ? file.filename : ``,
+    picture: {
+      name: file ? file.filename : ``,
+      alt: ``
+    },
     category: ensureArray(body.category),
     announce: body.announcement,
     fullText: body[`full-text`],
-    createDate: body.date
+    createDate: {
+      ISODate: body.date,
+      fullDate: body.date
+    }
   };
   try {
     await api.addArticle(articleData);

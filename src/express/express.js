@@ -5,6 +5,7 @@ const path = require(`path`);
 const mainRoutes = require(`./routes/main-routes`);
 const articlesRoutes = require(`./routes/articles-routes`);
 const myRoutes = require(`./routes/my-routes`);
+const {urlencoded} = require(`express`);
 
 const {HttpCode} = require(`../const`);
 
@@ -13,6 +14,9 @@ const PUBLIC_DIR = `public`;
 const UPLOAD_DIR = `upload`;
 
 const app = express();
+
+app.use(express.json());
+app.use(urlencoded({extended: true}));
 
 app.use(`/`, mainRoutes);
 app.use(`/my`, myRoutes);
