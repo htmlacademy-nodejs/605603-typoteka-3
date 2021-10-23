@@ -32,13 +32,11 @@ const randomPublicationDate = () => {
   const dateCount = timestamp + ((1000 * 60 * 60 * 24 * randomPastThreeMonths));
   const date = new Date(dateCount);
 
-  return {
-    ISODate: date.toISOString(),
-    fullDate: date.toLocaleString(`ru-RU`, {
-      dateStyle: `short`,
-      timeStyle: `short`,
-      hour12: false
-    })};
+  return date.toLocaleString(`ru-RU`, {
+    dateStyle: `short`,
+    timeStyle: `short`,
+    hour12: false
+  });
 };
 
 const generateComments = (count, comments) => {
@@ -51,11 +49,7 @@ const generateComments = (count, comments) => {
 };
 
 const getRandomPictureObj = () => {
-  const pictures = [
-    {name: `forest`, alt: `Фотография леса`},
-    {name: `sea`, alt: `Фотография моря`},
-    {name: `skyscraper`, alt: `Фотография небоскреба`}
-  ];
+  const pictures = [`forest`, `sea`, `skyscraper`];
   if (Math.random() < 0.5) {
     return ``;
   } else {

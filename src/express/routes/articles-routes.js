@@ -26,24 +26,18 @@ const upload = multer({storage});
 
 articlesRouter.get(`/add`, (req, res) => res.render(`articles/post`));
 
-articlesRouter.post(`/add`, upload.single(`photo`), async (req, res) => {
+articlesRouter.post(`/add`, upload.single(`upload`), async (req, res) => {
   const {body, file} = req;
 
-  console.log(req);
+  console.log(file);
 
   const articleData = {
     title: body.title,
-    picture: {
-      name: file ? file.filename : ``,
-      alt: ``
-    },
+    picture: file ? file.filename : ``,
     category: ensureArray(body.category),
     announce: body.announcement,
     fullText: body[`full-text`],
-    createDate: {
-      ISODate: body.date,
-      fullDate: body.date
-    }
+    createdDate: body.date
   };
   try {
     await api.addArticle(articleData);

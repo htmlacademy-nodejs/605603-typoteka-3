@@ -23,7 +23,7 @@ app.use(`/my`, myRoutes);
 app.use(`/articles`, articlesRoutes);
 
 app.use(express.static(path.resolve(__dirname, PUBLIC_DIR)));
-app.use(express.static(path.resolve(__dirname, UPLOAD_DIR)));
+app.use(`/upload/img`, express.static(path.resolve(__dirname, UPLOAD_DIR)));
 
 app.use((req, res) => {
   res.status(HttpCode.NOT_FOUND).render(`errors/404`);

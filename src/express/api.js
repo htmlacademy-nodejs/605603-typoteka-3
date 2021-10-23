@@ -39,7 +39,6 @@ class API {
   }
 
   async addArticle(data) {
-    console.log(data);
     return this._load(`/articles`, {
       method: `POST`,
       data
