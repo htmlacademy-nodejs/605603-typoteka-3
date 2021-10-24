@@ -411,7 +411,6 @@ describe(`API correctly deletes a comment`, () => {
   test(`Status code 200`, () => expect(response.statusCode).toBe(HttpCode.OK));
 
   test(`Returns comment deleted`, () => expect(response.body.id).toBe(`Xr2WMI`));
-
   test(`Comments count is 4 now`, () => {
     request(app)
       .get(`/articles/RJtp3-/comments`)
