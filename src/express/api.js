@@ -44,6 +44,10 @@ class API {
       data
     });
   }
+
+  async search(query) {
+    return this._load(`/search`, {params: {query}});
+  }
 }
 
 const defaultAPI = new API(defaultUrl, TIMEOUT);

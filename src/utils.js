@@ -17,3 +17,10 @@ module.exports.shuffle = (arr) => {
 };
 
 module.exports.ensureArray = (value) => Array.isArray(value) ? value : [value];
+
+module.exports.formatDate = (date) => {
+  const dateReversed = date.split(`-`).reverse().join(`.`);
+  const now = new Date();
+
+  return `${dateReversed}, ${now.getHours()}:${now.getMinutes()}`;
+};

@@ -4,7 +4,7 @@ const {Router} = require(`express`);
 const multer = require(`multer`);
 const path = require(`path`);
 const {nanoid} = require(`nanoid`);
-const {ensureArray} = require(`../../utils`);
+const {ensureArray, formatDate} = require(`../../utils`);
 
 const UPLOAD_DIR = `../upload/img/`;
 
@@ -29,15 +29,13 @@ articlesRouter.get(`/add`, (req, res) => res.render(`articles/post`));
 articlesRouter.post(`/add`, upload.single(`upload`), async (req, res) => {
   const {body, file} = req;
 
-  console.log(file);
-
   const articleData = {
     title: body.title,
     picture: file ? file.filename : ``,
     category: ensureArray(body.category),
     announce: body.announcement,
     fullText: body[`full-text`],
-    createdDate: body.date
+    createdDate: formatDate(body.date)
   };
   try {
     await api.addArticle(articleData);
