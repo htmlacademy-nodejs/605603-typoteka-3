@@ -1,5 +1,6 @@
 'use strict';
 
+
 module.exports.getRandomInt = (min, max) => {
   min = Math.ceil(min);
   max = Math.floor(max);
@@ -14,4 +15,23 @@ module.exports.shuffle = (arr) => {
   }
 
   return arr;
+};
+
+module.exports.ensureArray = (value) => Array.isArray(value) ? value : [value];
+
+module.exports.formatDate = (date) => {
+  const dateReversed = date.split(`-`).reverse().join(`.`);
+  const now = new Date();
+
+  return `${dateReversed}, ${now.getHours()}:${now.getMinutes()}`;
+};
+
+
+module.exports.formatDateToISO = (date) => {
+  const d = new Date();
+  const now = new Date(
+      `${date}, ${d.getHours()}:${d.getMinutes()}:${d.getSeconds()}`
+  );
+
+  return now.toISOString();
 };

@@ -50,3 +50,7 @@ Content-Type: application/json
 {
   "text": "Новый коммент"
 }
+
+###
+
+GET http://localhost:3000/api/search?query=Борьба HTTP/1.1

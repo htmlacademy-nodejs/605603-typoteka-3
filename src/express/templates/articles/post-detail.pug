@@ -30,23 +30,22 @@ block content
           .post__picture
             img(src='/img/sea-fullsize@1x.jpg' alt='пейзаж море, скалы, пляж')
           .post__text
-            h3 Бирюзовое доверие
+            h3 #{article.title}
             p.
-              У Apple иногда попадаются интерфейсы, за которые создателей хочется сильно поругать — к примеру интерфейс публикации приложения в AppStore, для которого я уже неделю восстановливаю свой аккаунт разработчика.
-              
-            p Или интерфейс подключения AirPods на макбуке. Чтобы переключить наушники между телефоном и компьютером, нужно сначала нажать на значок звука, затем дождаться, когда в списке устройств появятся наушники, потом нажать на них и дождаться, пока случится вся магия подключения. Иногда по загадочным причинам магия не случается, и операцию нужно повторить, выполняя все те же клики-ожидания-клики — бесит.
+              #{article.fullText}
       .post__wrapper.post__wrapper--comments
         section.post__comments.comments
           h2.comments__title.title.title--middle Комментарии
           ul.comments__list
-            li.comments__comment
-              .comments__avatar.avatar
-                img(src='/img/avatar-1.png' alt='аватар пользователя')
-              .comments__text
-                .comments__head
-                  p Евгений Петров •
-                  time.comments__date(datetime='2019-03-21T20:33') 21.03.2019, 20:33
-                p.comments__message Автор, ты все выдумал, покайся
+            each comment of article.comments
+              li.comments__comment
+                .comments__avatar.avatar
+                  img(src=`/img/avatar-1.png` alt='аватар пользователя')
+                .comments__text
+                  .comments__head
+                    p Евгений Петров •
+                    time.comments__date(datetime='2021-08-19T05:56:54.720Z') #{article.createdDate}
+                  p.comments__message #{comment.text}
             li.comments__comment
               .comments__avatar.avatar
                 img(src='/img/avatar-5.png' alt='аватар пользователя')
