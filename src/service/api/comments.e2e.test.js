@@ -119,13 +119,14 @@ const mockDataNoComment = [
 const createAPI = (mocks) => {
   const app = express();
   const cloneData = JSON.parse(JSON.stringify(mocks));
+
   app.use(express.json());
   comments(app, new DataService(cloneData));
+
   return app;
 };
 
 describe(`API returns all comments list`, () => {
-
   const app = createAPI(mockData);
 
   let response;
@@ -145,7 +146,6 @@ describe(`API returns all comments list`, () => {
 });
 
 describe(`Zero comments, no errors`, () => {
-
   const app = createAPI(mockDataNoComment);
 
   test(`Comments array length is 0`, () => {
@@ -154,4 +154,3 @@ describe(`Zero comments, no errors`, () => {
       .expect((res) => expect(res.body.length).toBe(0));
   });
 });
-

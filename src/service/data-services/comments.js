@@ -13,13 +13,15 @@ class CommentsService {
 
     this._articles
       .map((item) => {
-        return allComments.push(
+        allComments.push(
             {
               title: item.title,
               date: item.createdDate,
               comments: item.comments
             }
         );
+
+        return allComments;
       });
 
     return allComments;

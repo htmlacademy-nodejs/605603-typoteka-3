@@ -25,7 +25,7 @@ module.exports = (app, articleService, commentsService) => {
 
     if (!article) {
       return res.status(HttpCode.NOT_FOUND)
-        .send(`Not found article with id ${articleId}`);
+        .json({error: `Not found article with id ${articleId}`});
     }
 
     return res.status(HttpCode.OK)
@@ -45,7 +45,7 @@ module.exports = (app, articleService, commentsService) => {
 
     if (!article) {
       return res.status(HttpCode.NOT_FOUND)
-        .send(`Article with id: ${articleId}, doesn't exist`);
+        .json({error: `Article with id: ${articleId}, doesn't exist`});
     }
 
     const updatedArticle = articleService.update(articleId, req.body);
@@ -60,7 +60,7 @@ module.exports = (app, articleService, commentsService) => {
 
     if (!article) {
       return res.status(HttpCode.NOT_FOUND)
-        .send(`Article with id: ${articleId}, doesn't exist`);
+        .json({error: `Article with id: ${articleId}, doesn't exist`});
     }
 
     return res.status(HttpCode.OK)
@@ -82,7 +82,7 @@ module.exports = (app, articleService, commentsService) => {
 
     if (!deleteComment) {
       return res.status(HttpCode.NOT_FOUND)
-        .send(`Comment with id: ${commentId} doesn't exist`);
+        .json({error: `Comment with id: ${commentId} doesn't exist`});
     }
 
     return res.status(HttpCode.OK)

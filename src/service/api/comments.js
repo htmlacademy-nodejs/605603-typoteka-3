@@ -13,7 +13,7 @@ module.exports = (app, service) => {
 
     if (!comments) {
       res.status(HttpCode.NOT_FOUND)
-        .send(`Comments not found`);
+        .json({error: `Comments not found`});
     }
 
     res.status(HttpCode.OK)
