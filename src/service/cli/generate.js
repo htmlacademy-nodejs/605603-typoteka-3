@@ -32,11 +32,14 @@ const randomPublicationDate = () => {
   const dateCount = timestamp + ((1000 * 60 * 60 * 24 * randomPastThreeMonths));
   const date = new Date(dateCount);
 
-  return date.toLocaleString(`ru-RU`, {
-    dateStyle: `short`,
-    timeStyle: `short`,
-    hour12: false
-  });
+  return {
+    iso: new Date().toISOString(),
+    full: date.toLocaleString(`ru-RU`, {
+      dateStyle: `short`,
+      timeStyle: `short`,
+      hour12: false
+    })
+  };
 };
 
 const generateComments = (count, comments) => {
