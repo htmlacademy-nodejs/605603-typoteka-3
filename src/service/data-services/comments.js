@@ -13,13 +13,15 @@ class CommentsService {
 
     this._articles
       .map((item) => {
-        allComments.push(
-            {
-              title: item.title,
-              date: item.createdDate,
-              comments: item.comments
-            }
-        );
+        if (item.comments.length) {
+          allComments.push(
+              {
+                title: item.title,
+                date: item.createdDate,
+                comments: item.comments
+              }
+          );
+        }
 
         return allComments;
       });

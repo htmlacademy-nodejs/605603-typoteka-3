@@ -7,7 +7,14 @@ const api = require(`../api`).getAPI();
 
 mainRouter.get(`/`, async (req, res) => {
   const articles = await api.getArticles();
-  res.render(`main`, {articles});
+  const comments = await api.getAllComments();
+
+  if (articles.length === 0) {
+    res.render(`main-empty`);
+  } else {
+    res.render(`main`, {articles, comments});
+  }
+
 });
 
 mainRouter.get(`/register`, (req, res) => res.render(`sign-up`));
