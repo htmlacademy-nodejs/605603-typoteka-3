@@ -11,7 +11,7 @@ module.exports = (req, res, next) => {
 
   if (!keysExists) {
     return res.status(HttpCode.BAD_REQUEST)
-      .send(`This comment can't be created, some attributes missing`);
+      .json({error: `This comment can't be created, some attributes missing`});
   }
 
   return next();

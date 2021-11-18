@@ -8,7 +8,7 @@ module.exports = (service) => (req, res, next) => {
 
   if (!article) {
     res.status(HttpCode.NOT_FOUND)
-      .send(`Article with id: ${articleId} doesn't exist`);
+      .json({error: `Article with id: ${articleId} doesn't exist`});
   }
 
   res.locals.article = article;

@@ -49,12 +49,19 @@ articlesRouter.post(`/add`, upload.single(`upload`), async (req, res) => {
 });
 
 articlesRouter.get(`/category/:id`, (req, res) => res.render(`articles/articles-by-category`));
+
 articlesRouter.get(`/edit/:id`, async (req, res) => {
   const {id} = req.params;
   const article = await api.getArticle(id);
 
   res.render(`articles/post-detail`, {article});
 });
-articlesRouter.get(`/:id`, (req, res) => res.render(`articles/post-detail`));
+
+articlesRouter.get(`/:id`, async (req, res) => {
+  const {id} = req.params;
+  const article = await api.getArticle(id);
+
+  res.render(`articles/post-detail`, {article});
+});
 
 module.exports = articlesRouter;

@@ -50,9 +50,7 @@ class API {
   }
 }
 
-const defaultAPI = new API(defaultUrl, TIMEOUT);
-
 module.exports = {
   API,
-  getAPI: () => defaultAPI
+  getAPI: () => new API(defaultUrl, TIMEOUT)
 };
