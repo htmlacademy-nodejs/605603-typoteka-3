@@ -6,7 +6,6 @@ CREATE TABLE users(
   password_hash varchar(255) NOT NULL,
   avatar varchar(255)
 );
-
 CREATE TABLE articles(
   id integer PRIMARY KEY GENERATED ALWAYS AS IDENTITY,
   title varchar(255) NOT NULL,
@@ -17,7 +16,6 @@ CREATE TABLE articles(
   created_at timestamp DEFAULT CURRENT_TIMESTAMP,
   FOREIGN KEY (user_id) REFERENCES users(id)
 );
-
 CREATE TABLE comments(
   id integer PRIMARY KEY GENERATED ALWAYS AS IDENTITY,
   comment_text text NOT NULL,
@@ -27,18 +25,15 @@ CREATE TABLE comments(
   FOREIGN KEY (user_id) REFERENCES users(id),
   FOREIGN KEY (article_id) REFERENCES articles(id)
 );
-
 CREATE TABLE categories(
   id integer PRIMARY KEY GENERATED ALWAYS AS IDENTITY,
   category_name varchar(255) NOT NULL
 );
-
-CREATE TABLE artiles_categories(
+CREATE TABLE artilces_categories(
   article_id integer NOT NULL,
   category_id integer NOT NULL,
   PRIMARY KEY (article_id, category_id),
   FOREIGN KEY (article_id) REFERENCES articles(id),
   FOREIGN KEY (category_id) REFERENCES categories(id)
 );
-
 CREATE INDEX ON articles(title);
